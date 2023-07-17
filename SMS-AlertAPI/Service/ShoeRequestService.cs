@@ -29,6 +29,11 @@ namespace SMS_AlertAPI.Service
 
             var scanResult = await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
 
+            if(scanResult.Count == 0)
+            {
+                return;
+            }
+
             foreach (var item in scanResult)
             {
                 await _dynamoDb.DeleteAsync<ShoeRequest>(item.PhoneNumber);
