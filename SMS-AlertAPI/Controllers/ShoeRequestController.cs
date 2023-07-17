@@ -17,7 +17,7 @@ namespace SMS_AlertAPI.Controllers
             _shoeRequestService = shoeRequestService;
         }
 
-        [HttpPost]
+        [HttpPost("new")]
         public async Task<ActionResult<List<ShoeRequest>>> CreateRequest(ShoeRequestDto req)
         {
             ShoeRequest newShoeRequest = new ShoeRequest(
