@@ -53,5 +53,11 @@ namespace SMS_AlertAPI.Controllers
         {
             await _shoeRequestService.DeleteRequests();
         }
+
+        [HttpDelete("{PhoneNumber}")]
+        public async Task<ActionResult<List<ShoeRequest>>> DeleteRequest(string PhoneNumber)
+        {
+            return await _shoeRequestService.DeleteRequest(PhoneNumber);
+        }
     }
 }
