@@ -5,7 +5,6 @@ namespace SMS_AlertAPI.Models
 {
     public class Shoe
     {
-        public int Id { get; set; }
 
         [Required]
         public string Manufacturer { get; set; }

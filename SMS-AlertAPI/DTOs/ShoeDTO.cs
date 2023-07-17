@@ -4,8 +4,6 @@ namespace SMS_AlertAPI.DTOs
 {
     public class ShoeDTO
     {
-        public int Id { get; set; }
-        [Required]
         public int ShoeRequestId { get; set; }
         [Required]
         public string Manufacturer { get; set; }
