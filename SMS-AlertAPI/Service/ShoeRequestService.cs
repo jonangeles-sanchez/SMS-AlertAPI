@@ -16,6 +16,11 @@ namespace SMS_AlertAPI.Service
             await _dynamoDb.SaveAsync(SRequest);
             return await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
         }
+
+        public async Task<List<ShoeRequest>> GetRequests()
+        {
+            return await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
+        }
     }
 
 }
