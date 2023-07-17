@@ -42,5 +42,11 @@ namespace SMS_AlertAPI.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<ShoeRequest>>> GetRequests()
+        {
+            return await _shoeRequestService.GetRequests();
+        }
+
     }
 }
