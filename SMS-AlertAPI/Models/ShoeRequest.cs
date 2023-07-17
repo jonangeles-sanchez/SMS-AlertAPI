@@ -1,15 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Amazon.DynamoDBv2.DataModel;
 
 namespace SMS_AlertAPI.Models
 {
+    [DynamoDBTable("ShoeRequests")]
     public class ShoeRequest
     {
-        public int Id { get; set; }
 
         [Required]
-        private int PhoneNumber { get; set; }
+        public String PhoneNumber { get; set; }
 
         public List<Shoe> requestedShoes { get; set; }
+
+        public ShoeRequest()
+        {
+        }
+
+        public ShoeRequest(String PhoneNumber, List<Shoe> requestedShoes)
+        {
+            this.PhoneNumber = PhoneNumber;
+            this.requestedShoes = requestedShoes;
+        }
+
+        public ShoeRequest(String PhoneNumber)
+        {
+            this.PhoneNumber = PhoneNumber;
+        }
 
     }
 }

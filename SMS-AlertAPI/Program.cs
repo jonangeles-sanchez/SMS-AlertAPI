@@ -1,11 +1,26 @@
+using Amazon;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.Runtime;
+using SMS_AlertAPI.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IShoeRequestService, ShoeRequestService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var config = new AmazonDynamoDBConfig
+{
+    RegionEndpoint = RegionEndpoint.USEast1
+};
+var credentials = new BasicAWSCredentials("AKIASHQLGZ6QPMP3QFNM", "5jZ7pm2n1W6XHKNUyasOa1xitx+IgjiDDiRhY/GZ");
+var client = new AmazonDynamoDBClient(credentials, config);
+builder.Services.AddSingleton<IAmazonDynamoDB>(client);
+builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
 
 var app = builder.Build();
 
