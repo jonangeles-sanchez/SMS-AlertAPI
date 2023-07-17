@@ -48,5 +48,10 @@ namespace SMS_AlertAPI.Controllers
             return await _shoeRequestService.GetRequests();
         }
 
+        [HttpDelete]
+        public async Task DeleteRequests()
+        {
+            await _shoeRequestService.DeleteRequests();
+        }
     }
 }
