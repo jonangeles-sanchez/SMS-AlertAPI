@@ -8,5 +8,6 @@ namespace SMS_AlertAPI.Service
         Task<List<ShoeRequest>> CreateRequest(ShoeRequest SRequest);
         Task<List<ShoeRequest>> GetRequests();
         Task DeleteRequests();
+        Task<List<ShoeRequest>> DeleteRequest(string PhoneNumber);
     }
 }
