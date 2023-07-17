@@ -16,13 +16,6 @@ namespace SMS_AlertAPI.Models
         {
         }
 
-        public ShoeRequest(int Id, String PhoneNumber, List<Shoe> requestedShoes)
-        {
-            this.Id = Id;
-            this.PhoneNumber = PhoneNumber;
-            this.requestedShoes = requestedShoes;
-        }
-
         public ShoeRequest(String PhoneNumber, List<Shoe> requestedShoes)
         {
             this.PhoneNumber = PhoneNumber;

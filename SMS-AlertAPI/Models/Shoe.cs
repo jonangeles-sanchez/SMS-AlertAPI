@@ -20,15 +20,6 @@ namespace SMS_AlertAPI.Models
 
         public Shoe() { }
 
-        public Shoe (int id, string manufacturer, string name, double size, ShoeRequest request)
-        {
-            Id = id;
-            Manufacturer = manufacturer;
-            Name = name;
-            Size = size;
-            Request = request;
-        }
-
         public Shoe(string manufacturer, string name, double size)
         {
             Manufacturer = manufacturer;
