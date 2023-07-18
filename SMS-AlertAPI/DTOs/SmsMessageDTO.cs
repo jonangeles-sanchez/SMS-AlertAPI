@@ -10,5 +10,6 @@ namespace SMS_AlertAPI.DTOs
         public string Body { get; set; }
         [Required]
         public string From { get; set; }
+        public string Type { get; set; }
     }
 }
