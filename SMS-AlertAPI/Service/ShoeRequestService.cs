@@ -14,6 +14,14 @@ namespace SMS_AlertAPI.Service
 
         public async Task<List<ShoeRequest>> CreateRequest(ShoeRequest SRequest)
         {
+            // If the phone number already exists, concatenate the new shoes to the existing shoes
+            var request = await _dynamoDb.LoadAsync<ShoeRequest>(SRequest.PhoneNumber);
+            if(request != null)
+            {
+                request.requestedShoes.AddRange(SRequest.requestedShoes);
+                await _dynamoDb.SaveAsync(request);
+                return await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
+            }
             await _dynamoDb.SaveAsync(SRequest);
             return await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
         }
