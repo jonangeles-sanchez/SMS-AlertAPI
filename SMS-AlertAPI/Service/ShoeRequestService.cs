@@ -46,6 +46,14 @@ namespace SMS_AlertAPI.Service
             await _dynamoDb.DeleteAsync<ShoeRequest>(PhoneNumber);
             return await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
         }
+
+        public async Task SetReminded(string PhoneNumber)
+        {
+            var request = await _dynamoDb.LoadAsync<ShoeRequest>(PhoneNumber);
+            request.Reminded = true;
+            await _dynamoDb.SaveAsync(request);
+
+        }
     }
 
 }

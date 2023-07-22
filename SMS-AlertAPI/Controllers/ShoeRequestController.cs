@@ -63,5 +63,11 @@ namespace SMS_AlertAPI.Controllers
         {
             return await _shoeRequestService.DeleteRequest(PhoneNumber);
         }
+
+        [HttpPut("{PhoneNumber}")]
+        public async Task SetReminded(string PhoneNumber)
+        {
+            await _shoeRequestService.SetReminded(PhoneNumber);
+        }
     }
 }
