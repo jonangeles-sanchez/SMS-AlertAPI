@@ -7,5 +7,6 @@ namespace SMS_AlertAPI.DTOs
         [Required]
         public String PhoneNumber { get; set; }
         public List<ShoeDTO> requestedShoes { get; set; }
+        public Boolean Reminded { get; set; }
     }
 }

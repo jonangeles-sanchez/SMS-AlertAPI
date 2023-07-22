@@ -14,17 +14,20 @@ namespace SMS_AlertAPI.Models
 
         [Required]
         public double Size { get; set; }
+        [Required]
+        public int Quantity { get; set; }
 
         [JsonIgnore]
         public ShoeRequest Request { get; set; }
 
         public Shoe() { }
 
-        public Shoe(string manufacturer, string name, double size)
+        public Shoe(string manufacturer, string name, double size, int quantity)
         {
             Manufacturer = manufacturer;
             Name = name;
             Size = size;
+            Quantity = quantity;
         }
 
         public Shoe(string manufacturer, string name, double size, ShoeRequest request)

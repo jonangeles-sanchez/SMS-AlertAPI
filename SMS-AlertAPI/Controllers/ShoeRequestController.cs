@@ -20,8 +20,10 @@ namespace SMS_AlertAPI.Controllers
         [HttpPost("new")]
         public async Task<ActionResult<List<ShoeRequest>>> CreateRequest(ShoeRequestDto req)
         {
+            Console.WriteLine(req);
             ShoeRequest newShoeRequest = new ShoeRequest(
-                req.PhoneNumber
+                req.PhoneNumber,
+                req.Reminded
             );
 
             List<Shoe> shoes = new List<Shoe>();
@@ -30,7 +32,8 @@ namespace SMS_AlertAPI.Controllers
                 shoes.Add(new Shoe(
                     shoe.Manufacturer,
                     shoe.Name,
-                    shoe.Size
+                    shoe.Size,
+                    shoe.Quantity
                 ));
             }
 
@@ -38,7 +41,8 @@ namespace SMS_AlertAPI.Controllers
 
             List<ShoeRequest> shoeRequests = await _shoeRequestService.CreateRequest(newShoeRequest);
 
-            return Ok(shoeRequests);
+            //return Ok(shoeRequests);
+            return Ok();
 
         }
 
