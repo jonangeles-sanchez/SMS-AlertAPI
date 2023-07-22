@@ -43,7 +43,8 @@ namespace SMS_AlertAPI.Service
 
         public async Task<List<ShoeRequest>> DeleteRequest(string PhoneNumber)
         {
-            await _dynamoDb.DeleteAsync<ShoeRequest>(PhoneNumber);
+            var request = await _dynamoDb.LoadAsync<ShoeRequest>(PhoneNumber);
+            await _dynamoDb.DeleteAsync(request);
             return await _dynamoDb.ScanAsync<ShoeRequest>(new List<ScanCondition>()).GetRemainingAsync();
         }
 
